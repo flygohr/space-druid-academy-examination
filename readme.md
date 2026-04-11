@@ -12,3 +12,7 @@ Pitch: Combine exotic, absurd ingredients into cosmic brews to escape crippling 
 - 2026-04-11
 	- Heavy brainstorming, difficult to get a good, small idea
 	- Setting up this project, cloning my template
+
+### To-do:
+- [ ] Power meter minigame setup
+- [ ] Learn to drag and drop
