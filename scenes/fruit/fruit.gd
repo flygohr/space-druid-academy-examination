@@ -7,6 +7,7 @@ extends Node2D
 @onready var sprite_full: Sprite2D = $FruitShape/Sprites/SpriteFull
 @onready var sprite_chopped: Sprite2D = $FruitShape/Sprites/SpriteChopped
 @onready var sprite_powder: Sprite2D = $FruitShape/Sprites/SpritePowder
+@onready var grabbing_collision: ColorRect = $FruitShape/CollisionChecks/GrabbingCollision
 
 @onready var fruit_shape: Node2D = $FruitShape
 
@@ -19,7 +20,6 @@ enum Statuses {FULL, CHOPPED, GROUNDED}
 
 var speed: int = 25
 var type := Types.KIDNEY_GRAPES
-var is_grabbable: bool = false
 
 var status = Statuses.FULL
 
@@ -74,8 +74,15 @@ func _on_fruit_collision_full_area_exited(area: Area2D) -> void:
 		fruit_collision_chopped.show()
 		status = Statuses.CHOPPED
 
+func _on_color_rect_gui_input(event: InputEvent) -> void:
+		if event.is_action_pressed("Grab"):
+			print("Grabbing")
+			GameData.current_fruits.append(self)
+			reparent(get_node("/root/GameData"))
+			set_process(false)
+			grabbing_collision.hide()
+			reset_transforms()
+			hide()
 
-func _on_fruit_collision_full_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("Grab"):
-		print("Grabbing")
-		queue_free()
+func reset_transforms() -> void:
+	fruit_shape.position = Vector2.ZERO

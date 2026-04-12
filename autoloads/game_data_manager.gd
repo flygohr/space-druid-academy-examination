@@ -20,6 +20,8 @@ var config: Dictionary = {
 var active_save_slot: int = 1
 var is_in_game: bool = false # Track if in game for settings menu options
 
+var current_fruits: Array = []
+
 # CHOPPING MINIGAME
 var total_fruits_amount: int = 0
 var current_fruits_amount: int = 0:

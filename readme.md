@@ -15,6 +15,7 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - 2026-04-12
 	- Idea finalized
 	- Started implementing minigames, grabbing and chopping
+	- Added global persistence of fruit nodes and scene transition
 
 ### To-do:
 - [ ] Power meter minigame setup

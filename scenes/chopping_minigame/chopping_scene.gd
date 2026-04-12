@@ -25,6 +25,7 @@ var rounds: int = 5:
 		update_rounds_left(new_value)
 
 func _ready() -> void:
+	print(GameData.current_fruits)
 	top_slider.slider_stopped.connect(start_second_slider)
 	bottom_slider.slider_stopped.connect(draw_laser)
 	SignalBus.laser_finished_firing.connect(restart_laser)

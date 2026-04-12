@@ -4,7 +4,9 @@ extends Node2D
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var time_to_grab: Timer = $TimeToGrab
-@onready var time_left_label: Label = $TimeLeftLabel
+@onready var time_left_label: Label = $CanvasLayer/TimeLeftLabel
+@onready var click_blocker: ColorRect = $CanvasLayer/ClickBlocker
+
 
 @onready var spawn_path: Path2D = $SpawnPath
 @onready var path_follow_2d: PathFollow2D = $SpawnPath/PathFollow2D
@@ -38,11 +40,11 @@ func start_countdown() -> void:
 	time_left_label.text = "START IN 1..."
 	await get_tree().create_timer(1.0).timeout
 	grabbing_enabled = true
+	click_blocker.hide()
 	time_to_grab.start()
 
 func spawn_fruit() -> void:
 	var new_fruit := fruit_scene.instantiate()
-	
 	new_fruit.generate_parameters()
 	
 	var start_point_ratio: float = randf()
@@ -63,3 +65,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 func _on_time_to_grab_timeout() -> void:
 	spawn_timer.stop()
+	click_blocker.show()
+	print(GameData.current_fruits)
+	await get_tree().create_timer(3.0).timeout
+	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_CHOPPING_MINIGAME])
