@@ -21,7 +21,16 @@ var active_save_slot: int = 1
 var is_in_game: bool = false # Track if in game for settings menu options
 
 # CHOPPING MINIGAME
-var current_fruits_amount: int = 0
+var total_fruits_amount: int = 0
+var current_fruits_amount: int = 0:
+	set(new_value):
+		current_fruits_amount = new_value
+		SignalBus.chopping_fruit_amt_changed.emit(new_value)
+
+var current_chopped_hits: int = 0:
+	set(new_value):
+		current_chopped_hits = new_value
+		SignalBus.chopping_happened.emit(new_value)
 
 # KEYS
 # Strings to organize the data into a Dictionary and later into a JSON

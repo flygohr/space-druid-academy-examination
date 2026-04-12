@@ -3,4 +3,5 @@
 extends Node
 
 signal laser_finished_firing
-signal chopping_score_changed
+signal chopping_fruit_amt_changed(amt: int)
+signal chopping_happened(amt:int)

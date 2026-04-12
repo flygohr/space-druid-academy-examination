@@ -20,3 +20,24 @@ position = Vector2(0, 160)
 [node name="Cutting board" parent="." unique_id=264996476 instance=ExtResource("4_6j0pb")]
 position = Vector2(16, 48)
 fruit_scene = ExtResource("5_vwr26")
+
+[node name="FruitsLeftLabel" type="Label" parent="." unique_id=1844786514]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 85.0
+offset_bottom = 14.0
+text = "FRUITS LEFT: 0"
+
+[node name="GroundedPercentLabel" type="Label" parent="." unique_id=221819366]
+offset_left = 112.0
+offset_top = 1.0
+offset_right = 196.0
+offset_bottom = 14.0
+text = "GROUNDED: 0%"
+
+[node name="RoundsLeftLabel" type="Label" parent="." unique_id=383065369]
+offset_left = 1.0
+offset_top = 177.0
+offset_right = 85.0
+offset_bottom = 190.0
+text = "ROUNDS LEFT: 5"

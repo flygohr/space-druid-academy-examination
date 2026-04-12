@@ -12,6 +12,9 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - 2026-04-11
 	- Heavy brainstorming, difficult to get a good, small idea
 	- Setting up this project, cloning my template
+- 2026-04-12
+	- Idea finalized
+	- Started implementing minigames, grabbing and chopping
 
 ### To-do:
 - [ ] Power meter minigame setup
