@@ -6,8 +6,6 @@ extends Node2D
 var top_coord: Vector2
 var bottom_coord: Vector2
 
-signal laser_fired
-
 func _ready() -> void:
 	hide()
 
@@ -31,3 +29,11 @@ func set_coords(top: Vector2, bottom: Vector2) -> void:
 
 func start_laser() -> void:
 	show()
+	await get_tree().create_timer(1.0).timeout
+	hide_laser()
+
+func hide_laser() -> void:
+	hide()
+	if static_body_2d.get_child_count() > 0:
+		static_body_2d.get_child(0).queue_free()
+	SignalBus.laser_finished_firing.emit()

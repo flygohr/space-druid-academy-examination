@@ -12,3 +12,4 @@ func spawn_fruit() -> void:
 			randf_range(0, board_area.size.y)
 		)
 		add_child(fruit)
+		GameData.current_fruits_amount += 1

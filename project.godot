@@ -26,8 +26,8 @@ ScenesManager="*uid://dttnxbrn83jg5"
 MusicManager="*uid://m6ppdobe31o3"
 GameData="*uid://c6vensvjc2kmx"
 SavesManager="*uid://bqphpexlqus52"
-DebugInfo="*uid://de8n5gdg7gtbr"
 PopupManager="*uid://b63w0p3ooheuj"
+SignalBus="*uid://cbb3j464d0xix"
 
 [display]
 

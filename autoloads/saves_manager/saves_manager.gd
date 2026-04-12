@@ -166,7 +166,6 @@ func export_save(game_data: Dictionary, game_name: String = "", game_version: St
 		var file_to_save_name: String = str(game_name.replace(" ", "_"),"_",game_version,"_slot_",slot,"_",SAVE_NAME.replace(" ", "_")).to_lower()
 		
 		if OS.get_name() == 'Web': # Export save works only on web builds for now
-			DebugInfo.add_line(string_data)
 			var buffer: PackedByteArray = string_data.to_utf8_buffer()
 			JavaScriptBridge.download_buffer(buffer, file_to_save_name)
 		else: push_error("Error trying to export save file: unsupported device")
