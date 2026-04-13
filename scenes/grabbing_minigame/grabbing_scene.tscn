@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c8j45fnevhlxu"]
+
+[ext_resource type="Script" uid="uid://bwx2xmchstnvg" path="res://scenes/grabbing_minigame/grabbing_scene.gd" id="1_3vatu"]
+[ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/fruit/fruit.tscn" id="2_g0x35"]
+
+[sub_resource type="Curve2D" id="Curve2D_g0x35"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 289.28003, -32, 0, 0, 0, 0, -33.280006, -32, 0, 0, 0, 0, -33.280006, 224, 0, 0, 0, 0, 289.28003, 224, 0, 0, 0, 0, 289.28003, -32)
+}
+point_count = 5
+
+[node name="GrabbingScene" type="Node2D" unique_id=871806407]
+script = ExtResource("1_3vatu")
+fruit_scene = ExtResource("2_g0x35")
+
+[node name="SpawnPath" type="Path2D" parent="." unique_id=860300810]
+position = Vector2(2.6666718, 0)
+scale = Vector2(1.0416666, 1)
+curve = SubResource("Curve2D_g0x35")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath" unique_id=1228556626]
+position = Vector2(289.28003, -32)
+rotation = 3.1415927
+loop = false
+
+[node name="TimeToGrab" type="Timer" parent="." unique_id=1221225925]
+wait_time = 10.0
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=97403253]
+wait_time = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768469732]
+
+[node name="FruitsGrabbedLabel" type="Label" parent="CanvasLayer" unique_id=131829374]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 17.0
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer" unique_id=708711159]
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 21.0
+text = "TIME LEFT: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickBlocker" type="ColorRect" parent="CanvasLayer" unique_id=375182457]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="timeout" from="TimeToGrab" to="." method="_on_time_to_grab_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

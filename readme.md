@@ -16,7 +16,10 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- Idea finalized
 	- Started implementing minigames, grabbing and chopping
 	- Added global persistence of fruit nodes and scene transition
+- 2026-04-13
+	- I have all the minigames done, prototypes
+	- Starting to get the flow of the game going adding screens and mockup assets
 
 ### To-do:
-- [ ] Power meter minigame setup
-- [ ] Learn to drag and drop
+- [ ] Make settings menu an autoload with a signal, too messy to keep track of scene
+- [ ] Find a way to pause the current node upon firing the settings menu

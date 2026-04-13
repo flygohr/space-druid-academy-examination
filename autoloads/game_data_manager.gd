@@ -29,6 +29,9 @@ var current_fruits_amount: int = 0:
 		current_fruits_amount = new_value
 		SignalBus.chopping_fruit_amt_changed.emit(new_value)
 
+# STIRRING MINIGAME
+var stirring_ongoing = true
+
 var current_chopped_hits: int = 0:
 	set(new_value):
 		current_chopped_hits = new_value

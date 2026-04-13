@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dd0id6bppupej"]
+
+[ext_resource type="Script" uid="uid://2n1bmf4e03hw" path="res://scenes/stirring_minigame/stirring_scene.gd" id="1_24vjm"]
+[ext_resource type="PackedScene" uid="uid://bqj261sssx85t" path="res://scenes/stirring_minigame/pot.tscn" id="2_4gllk"]
+[ext_resource type="PackedScene" uid="uid://pcxlkctbxhxq" path="res://scenes/stirring_minigame/rocket.tscn" id="3_gbpbl"]
+
+[node name="StirringScene" type="Node2D" unique_id=1079126123]
+script = ExtResource("1_24vjm")
+
+[node name="Pot" parent="." unique_id=1071121286 instance=ExtResource("2_4gllk")]
+position = Vector2(208, 96)
+
+[node name="Rocket" parent="." unique_id=1586514497 instance=ExtResource("3_gbpbl")]
+
+[node name="LapsLabel" type="Label" parent="." unique_id=1342241619]
+offset_right = 42.0
+offset_bottom = 13.0
+text = "STIRS: 0"
