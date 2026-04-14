@@ -26,3 +26,7 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 ### To-do:
 - [x] Make settings menu an autoload with a signal, too messy to keep track of scene
 - [x] Find a way to pause the current node upon firing the settings menu
+- [ ] Set up grade screen
+- [ ] Set up report card
+- [ ] Non-critical:
+	- [ ] Some button remains highlighted the first time I call the options menu in, idk why
