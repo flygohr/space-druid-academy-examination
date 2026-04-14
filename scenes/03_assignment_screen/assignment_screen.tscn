@@ -28,12 +28,18 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=733408390]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=754558578]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="MenuButton" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=607294290 instance=ExtResource("3_7c4ic")]
 layout_mode = 2
 
-[node name="MenuButton" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=607294290 instance=ExtResource("3_7c4ic")]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=966102388]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=802258192]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
@@ -41,6 +47,7 @@ theme_override_constants/separation = 0
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=110996153]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_nejio")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -49,48 +56,10 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=294142121]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer" unique_id=625978818]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1061092441]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.18202415, 0.18202412, 0.18202412, 1)
-text = "NEW ASSIGNMENT:"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1724730195]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("4_tb26x")
-expand_mode = 4
-
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1270650411]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.23441935, 0.23441935, 0.23441935, 1)
-text = "MYSTERIOUS POTION"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=480753710]
-layout_mode = 2
-theme_override_colors/default_color = Color(0.24734995, 0.24734995, 0.24734992, 1)
-text = "The effect is described here."
-fit_content = true
-
-[node name="NinePatchRect2" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=206425587]
+[node name="NinePatchRect2" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1712909290]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_nejio")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -99,7 +68,7 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2" unique_id=1086506954]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2" unique_id=1005982888]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,83 +80,189 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer" unique_id=1124057110]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer" unique_id=1766860544]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=1683703302]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=911517039]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.18202415, 0.18202412, 0.18202412, 1)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
 text = "INGREDIENTS:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=1538864071]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=1516037410]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1527165225]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer" unique_id=1004126790]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1211191923]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=726118016]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1929342238]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=404851568]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=2134381041]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1403547435]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_tb26x")
-expand_mode = 4
+expand_mode = 1
+stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=640095976]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=540155829]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8978127, 0.8978127, 0.89781266, 1)
+text = "12x"
+fit_content = true
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1881421415]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.21355972, 0.21355969, 0.21355972, 1)
-bbcode_enabled = true
-text = "x12 KIDNEY GRAPES"
+theme_override_colors/default_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+text = "KIDNEY GRAPES"
 fit_content = true
 autowrap_mode = 2
+vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=281458635]
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=2030615223]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=517520462]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2" unique_id=873677980]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=242268271]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=736180835]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer" unique_id=669637420]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=929512954]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1861251453]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_tb26x")
-expand_mode = 4
+expand_mode = 1
+stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1593240176]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1288859254]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8978127, 0.8978127, 0.89781266, 1)
+text = "12x"
+fit_content = true
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=316725280]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.21355972, 0.21355969, 0.21355972, 1)
-text = "x12 KIDNEY GRAPES"
+theme_override_colors/default_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+text = "KIDNEY GRAPES"
 fit_content = true
 autowrap_mode = 2
+vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2079391568]
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=672397898]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=747992624]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3" unique_id=21085512]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer" unique_id=1127313207]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=1406563566]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer" unique_id=1140329388]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=574068841]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2044866472]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_tb26x")
-expand_mode = 4
+expand_mode = 1
+stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1065913998]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1625742917]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.8978127, 0.8978127, 0.89781266, 1)
+text = "12x"
+fit_content = true
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=1237657241]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.21355972, 0.21355969, 0.21355972, 1)
-text = "x12 KIDNEY GRAPES"
+theme_override_colors/default_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+text = "KIDNEY GRAPES"
 fit_content = true
 autowrap_mode = 2
+vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1427442998]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=2086124154]
+layout_mode = 2
+theme_override_constants/margin_right = 8
+
+[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1427442998]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "START"
 
-[node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/StartButton" unique_id=1021131532]
+[node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/StartButton" unique_id=1021131532]
 script = ExtResource("5_tb26x")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/StartButton" to="." method="_on_start_button_pressed"]

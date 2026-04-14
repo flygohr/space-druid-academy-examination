@@ -32,9 +32,9 @@ Settings="*uid://cc1yqy62xbprh"
 
 [display]
 
-window/size/viewport_width=240
-window/size/viewport_height=160
-window/stretch/mode="viewport"
+window/size/viewport_width=272
+window/size/viewport_height=192
+window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
 [editor_plugins]
