@@ -6,7 +6,10 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 ### Credits:
 - Font: https://rurr.itch.io/tremolo-mono
 - HTML5 File Dialog plugin: https://gitlab.com/mocchapi/godot-4-html5-file-dialogs
-- Game template by me: https://github.com/flygohr/godot-template
+- Basic game setup template by me: https://github.com/flygohr/godot-template
+- Some pixel art based on:
+	- Space BG: https://opengameart.org/content/space-background-01
+	- Some base sprites for the fruit from: https://bigwander.itch.io/the-banquet by https://bigwander.itch.io 
 
 ### Devlog:
 - 2026-04-11
@@ -21,5 +24,5 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- Starting to get the flow of the game going adding screens and mockup assets
 
 ### To-do:
-- [ ] Make settings menu an autoload with a signal, too messy to keep track of scene
-- [ ] Find a way to pause the current node upon firing the settings menu
+- [x] Make settings menu an autoload with a signal, too messy to keep track of scene
+- [x] Find a way to pause the current node upon firing the settings menu
