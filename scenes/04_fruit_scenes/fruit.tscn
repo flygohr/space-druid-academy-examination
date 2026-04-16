@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://b1j6udrtmx3w6"]
 
 [ext_resource type="Script" uid="uid://irinjgntsrry" path="res://scenes/04_fruit_scenes/fruit.gd" id="1_luid3"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dwgx"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="2_fhe0s"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_luid3"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -29,8 +27,6 @@ script = ExtResource("1_luid3")
 [node name="Sprites" type="Node2D" parent="FruitShape" unique_id=222717112]
 
 [node name="SpriteFull" type="Sprite2D" parent="FruitShape/Sprites" unique_id=107178803]
-scale = Vector2(0.125, 0.125)
-texture = SubResource("CompressedTexture2D_8dwgx")
 
 [node name="SpriteChopped" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1934207790]
 visible = false
@@ -59,12 +55,12 @@ visible = false
 shape = SubResource("CircleShape2D_f6dk3")
 debug_color = Color(0.57362586, 0.5560909, 3.85046e-07, 0.41960785)
 
-[node name="GrabbingCollision" type="ColorRect" parent="FruitShape/CollisionChecks" unique_id=1270571868]
-offset_left = -7.0
-offset_top = -7.0
-offset_right = 7.0
-offset_bottom = 7.0
-color = Color(1, 1, 1, 0)
+[node name="GrabbingCollision" type="TextureButton" parent="FruitShape/CollisionChecks" unique_id=1827253192]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture_normal = ExtResource("2_fhe0s")
 
 [connection signal="area_entered" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_entered"]
 [connection signal="area_exited" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_exited"]

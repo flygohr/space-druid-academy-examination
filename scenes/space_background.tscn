@@ -2,16 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://c425cfodoorjw" path="res://assets/images/space_background.png" id="1_gejcq"]
 
-[node name="SpaceBackground" type="TextureRect" unique_id=245754142]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -80.0
-offset_right = 360.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SpaceBackground" type="Node2D" unique_id=2146281425]
+process_mode = 3
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=616556662]
+repeat_size = Vector2(720, 0)
+autoscroll = Vector2(10, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1534073792]
 texture = ExtResource("1_gejcq")
+centered = false

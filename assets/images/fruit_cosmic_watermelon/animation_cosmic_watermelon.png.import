@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuxeni1otpnj2"
-path="res://.godot/imported/all-seeing_cherry_2.png-becd94fa95aa5789a98bc4946e056d43.ctex"
+uid="uid://caeunebcv8sgj"
+path="res://.godot/imported/animation_cosmic_watermelon.png-82e3a7d8745203629e84b5258a6fd523.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fruit_all-seeing_cherry/all-seeing_cherry_2.png"
-dest_files=["res://.godot/imported/all-seeing_cherry_2.png-becd94fa95aa5789a98bc4946e056d43.ctex"]
+source_file="res://assets/images/fruit_cosmic_watermelon/animation_cosmic_watermelon.png"
+dest_files=["res://.godot/imported/animation_cosmic_watermelon.png-82e3a7d8745203629e84b5258a6fd523.ctex"]
 
 [params]
 

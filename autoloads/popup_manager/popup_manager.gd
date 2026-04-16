@@ -9,7 +9,6 @@ extends Node2D
 @onready var yes_button: Button = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer/YesButton
 @onready var next_button: Button = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer/NextButton
 
-
 signal no_button_pressed
 signal yes_button_pressed
 signal next_button_pressed
@@ -22,9 +21,9 @@ func show_popup_confirmation(popup_text: String, no_button_text: String = "No", 
 	next_button.hide()
 	
 	popup.show()
-	popup_text_label.text = popup_text
-	no_button.text = no_button_text
-	yes_button.text = yes_button_text
+	popup_text_label.text = popup_text.to_upper()
+	no_button.text = no_button_text.to_upper()
+	yes_button.text = yes_button_text.to_upper()
 
 func show_popup_dialog(popup_text: String, next_button_text: String = "Next") -> void:
 	no_button.hide()

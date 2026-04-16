@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blwcv52d0udgj"
-path="res://.godot/imported/cosmic_watermelon_2.png-353815c5b753f7cea6bf1bc7b1bd118b.ctex"
+uid="uid://cnju17kj1mg17"
+path="res://.godot/imported/cosmic_watermelon.png-377d6bd3ab0159621ae1b20f3ea166a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/fruit_cosmic_watermelon/cosmic_watermelon_2.png"
-dest_files=["res://.godot/imported/cosmic_watermelon_2.png-353815c5b753f7cea6bf1bc7b1bd118b.ctex"]
+source_file="res://assets/images/fruit_cosmic_watermelon/cosmic_watermelon.png"
+dest_files=["res://.godot/imported/cosmic_watermelon.png-377d6bd3ab0159621ae1b20f3ea166a9.ctex"]
 
 [params]
 

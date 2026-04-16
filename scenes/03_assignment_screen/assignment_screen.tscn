@@ -7,8 +7,12 @@
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="5_tb26x"]
 [ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="6_4850y"]
 [ext_resource type="Texture2D" uid="uid://bwlwalwpyfn0e" path="res://assets/images/parchment.png" id="6_i6nay"]
-[ext_resource type="Texture2D" uid="uid://b5jttb4gpdhq4" path="res://assets/images/fruit_all-seeing_cherry/all-seeing_cherry_1.png" id="7_4850y"]
-[ext_resource type="Texture2D" uid="uid://cnju17kj1mg17" path="res://assets/images/fruit_cosmic_watermelon/cosmic_watermelon_1.png" id="8_4850y"]
+[ext_resource type="Texture2D" uid="uid://b5jttb4gpdhq4" path="res://assets/images/fruit_all-seeing_cherry/all-seeing_cherry.png" id="7_4850y"]
+[ext_resource type="Texture2D" uid="uid://cnju17kj1mg17" path="res://assets/images/fruit_cosmic_watermelon/cosmic_watermelon.png" id="8_4850y"]
+
+[sub_resource type="GDScript" id="GDScript_4850y"]
+script/source = "extends Node2D
+"
 
 [node name="AssignmentScreen" type="Node2D" unique_id=897812493]
 script = ExtResource("1_4xqpc")
@@ -16,6 +20,7 @@ script = ExtResource("1_4xqpc")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1735294527]
 
 [node name="SpaceBackground" parent="CanvasLayer" unique_id=245754142 instance=ExtResource("1_fdenl")]
+script = SubResource("GDScript_4850y")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=641320172]
 anchors_preset = 15
@@ -70,7 +75,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=911517039]
+[node name="AssignmentLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer" unique_id=911517039]
 layout_mode = 2
 size_flags_vertical = 3
 text = "ASSIGNMENT #1 INGREDIENTS:"

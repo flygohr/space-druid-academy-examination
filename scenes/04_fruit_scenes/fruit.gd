@@ -7,23 +7,36 @@ extends Node2D
 @onready var sprite_full: Sprite2D = $FruitShape/Sprites/SpriteFull
 @onready var sprite_chopped: Sprite2D = $FruitShape/Sprites/SpriteChopped
 @onready var sprite_powder: Sprite2D = $FruitShape/Sprites/SpritePowder
-@onready var grabbing_collision: ColorRect = $FruitShape/CollisionChecks/GrabbingCollision
-
+@onready var grabbing_collision: TextureButton = $FruitShape/CollisionChecks/GrabbingCollision
 @onready var fruit_shape: Node2D = $FruitShape
 
-enum Types {
-	KIDNEY_GRAPES,
-	HEART_DRAGON_FRUIT,
-	ROTTEN_BANANA
-}
-enum Statuses {FULL, CHOPPED, GROUNDED}
-
+var is_animated: bool = false
 var speed: int = 25
-var type := Types.KIDNEY_GRAPES
+var path_complexity: int = 0
 
+enum Statuses {FULL, CHOPPED, GROUNDED}
 var status = Statuses.FULL
 
+var sprite_full_uri: String
+var grabbing_sprite_uri: String
+
 func _ready() -> void:
+	print("ready")
+	
+	if sprite_full_uri:
+		var sprite_full_texture = load(sprite_full_uri)
+		sprite_full.texture = sprite_full_texture
+		
+	if grabbing_sprite_uri:
+		var grabbing_texture = load(grabbing_sprite_uri)
+		grabbing_collision.texture_normal = grabbing_texture
+		# Generate click mask
+		var image = grabbing_collision.texture_normal.get_image()
+		var bitmap = BitMap.new()
+		bitmap.create_from_image_alpha(image)
+		grabbing_collision.texture_click_mask = bitmap
+		
+	
 	set_process(false)
 
 func _process(delta: float) -> void:
@@ -31,21 +44,6 @@ func _process(delta: float) -> void:
 	fruit_shape.position = path_follow_2d.position
 	if path_follow_2d.progress_ratio >= .99:
 		queue_free()
-		
-func generate_parameters() -> void:
-	var type_picker = randf()
-	if type_picker >= 0.6 and type_picker < 0.8:
-		type = Types.HEART_DRAGON_FRUIT
-	elif type_picker >= 0.8:
-		type = Types.ROTTEN_BANANA
-		
-	match type:
-		Types.HEART_DRAGON_FRUIT:
-			$FruitShape/Sprites/SpriteFull.modulate = Color(0.487, 0.176, 0.176, 1.0)
-			speed *= 3
-		Types.ROTTEN_BANANA:
-			$FruitShape/Sprites/SpriteFull.modulate = Color(0.447, 0.485, 0.152, 1.0)
-			speed *= 2
 
 func start_pathing(start_pos: Vector2, end_pos: Vector2) -> void:
 	var new_curve: Curve2D = Curve2D.new()

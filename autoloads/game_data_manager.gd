@@ -3,8 +3,8 @@
 
 extends Node
 
-const GAME_NAME: String = "Disgraced Space Druid"
-const GAME_VERSION: String = "0.1"
+const GAME_NAME: String = "Space Druid Licence Renewal"
+const GAME_VERSION: String = "0.3"
 
 # GAME CONFIG
 const KEY_MUSIC_VOLUME: String = "music_volume"
@@ -18,9 +18,59 @@ var config: Dictionary = {
 # GAME DATA
 # Variables to keep track of during gameplay
 var active_save_slot: int = 1
-var is_in_game: bool = false # Track if in game for settings menu options
 
 var current_fruits: Array = []
+
+# FRUIT DATA
+const KEY_KIDNEY_GRAPES: String = "kidney grapes"
+const KEY_ALL_SEEING_CHERRY: String = "all-seeing cherry"
+const KEY_COSMIC_WATERMELON: String = "cosmic watermelon"
+
+const FRUIT_KEYS: Array = [KEY_KIDNEY_GRAPES, KEY_ALL_SEEING_CHERRY, KEY_COSMIC_WATERMELON] # used for fruit generation?
+
+enum FruitParams {MAIN_TEXTURE, CHOPPED_TEXTURE, POWDER_TEXTURE, SINGLE_TEXTURE, IS_ANIMATED, SPEED, PATH_COMPLEXITY}
+
+const FRUIT_DATA: Dictionary = {
+	KEY_KIDNEY_GRAPES: {
+		FruitParams.MAIN_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.SINGLE_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.IS_ANIMATED: false,
+		FruitParams.SPEED: 25,
+		FruitParams.PATH_COMPLEXITY: 0
+	},
+	KEY_ALL_SEEING_CHERRY: {
+		FruitParams.MAIN_TEXTURE: "uid://b5jttb4gpdhq4",
+		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.SINGLE_TEXTURE: "uid://b5jttb4gpdhq4",
+		FruitParams.IS_ANIMATED: true,
+		FruitParams.SPEED: 15,
+		FruitParams.PATH_COMPLEXITY: 0
+	},
+	KEY_COSMIC_WATERMELON: {
+		FruitParams.MAIN_TEXTURE: "uid://cnju17kj1mg17",
+		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.SINGLE_TEXTURE: "uid://cnju17kj1mg17",
+		FruitParams.IS_ANIMATED: false,
+		FruitParams.SPEED: 15,
+		FruitParams.PATH_COMPLEXITY: 3
+	}
+}
+
+const KEY_REQUIREMENTS: String = "requirements"
+
+const LEVELS: Dictionary = {
+	1: {
+		KEY_REQUIREMENTS: {
+			KEY_KIDNEY_GRAPES: 5,
+			KEY_ALL_SEEING_CHERRY: 5,
+			KEY_COSMIC_WATERMELON: 1
+		}
+	}
+}
 
 # CHOPPING MINIGAME
 var total_fruits_amount: int = 0
@@ -41,12 +91,16 @@ var current_chopped_hits: int = 0:
 # Strings to organize the data into a Dictionary and later into a JSON
 const KEY_GAME_VERSION: String = "game version"
 const KEY_IS_NEW_GAME: String = "is new game"
+const KEY_PROTOCOL_NUMBER: String = "protocol number"
+const KEY_CURRENT_LEVEL: String = "current level"
 
 # DEFAULT GAME DATA
 # What to load into a new save
 const DEFAULT_GAME_DATA: Dictionary = {
 	KEY_GAME_VERSION: GAME_VERSION,
-	KEY_IS_NEW_GAME: true
+	KEY_IS_NEW_GAME: true, #TODO: change to false upon completing level 1
+	KEY_PROTOCOL_NUMBER: "AA-12345",
+	KEY_CURRENT_LEVEL: 1
 }
 
 # CURRENT GAME DATA

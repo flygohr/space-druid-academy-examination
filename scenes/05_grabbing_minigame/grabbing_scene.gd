@@ -6,8 +6,6 @@ extends Node2D
 @onready var time_to_grab: Timer = $TimeToGrab
 @onready var time_left_label: Label = $CanvasLayer/TimeLeftLabel
 @onready var click_blocker: ColorRect = $CanvasLayer/ClickBlocker
-
-
 @onready var spawn_path: Path2D = $SpawnPath
 @onready var path_follow_2d: PathFollow2D = $SpawnPath/PathFollow2D
 
@@ -45,7 +43,11 @@ func start_countdown() -> void:
 
 func spawn_fruit() -> void:
 	var new_fruit := fruit_scene.instantiate()
-	new_fruit.generate_parameters()
+	var picked_fruit = GameData.FRUIT_KEYS.pick_random()
+	
+	#instead of calling a function here, set parameters as variables
+	new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
+	new_fruit.grabbing_sprite_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SINGLE_TEXTURE]
 	
 	var start_point_ratio: float = randf()
 	path_follow_2d.progress_ratio = start_point_ratio

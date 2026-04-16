@@ -27,6 +27,11 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 ### To-do:
 - [x] Make settings menu an autoload with a signal, too messy to keep track of scene
 - [x] Find a way to pause the current node upon firing the settings menu
+- [ ] Art:
+	- [ ] Title art: gothic font for "Space Druid", regular font for "Licence Renewal"
+	- [ ] Repeating space background
+	- [ ] Colored handles for sliders to match theme
+	- [ ] Chopped and ground fruit states
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card
