@@ -46,7 +46,7 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- [x] Repeating space background
 	- [ ] Colored handles for sliders to match theme
 	- [x] Chopped fruit states
-	- [ ] More opaque chopped fruits
+	- [ ] More opaque chopped fruits?
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card
@@ -54,4 +54,6 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - [ ] Different stages for the fruit in the chopping minigame:
 	- [ ] The original idea was to chop the fruit in different stages, each expanding the collision shape so it would have been easier to get multiple fruit in a laser shot, but also more granular to get a 100% completion
 - [ ] Non-critical:
+	- [ ] Transitions are a bit janky
+	- [ ] Bottom bar sprites loading delay
 	- [ ] Some button remains highlighted the first time I call the options menu in, idk why. Probably hovering something, and not recalculating outline size
