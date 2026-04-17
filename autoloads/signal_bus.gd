@@ -9,6 +9,7 @@ signal unpause_game
 
 # GRABBING MINIGAME
 signal fruit_grabbed(type: String)
+signal spawn_fruit
 
 # CHOPPING MINIGAME
 signal laser_finished_firing

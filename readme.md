@@ -23,18 +23,28 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - 2026-04-13
 	- I have all the minigames done, prototypes
 	- Starting to get the flow of the game going adding screens and mockup assets
+- 2026-04-14
+	- Not much time today, just worked out a flow and some texts in Obsidian
+- 2026-04-15
+	- Still not much time, minimal progress
+- 2026-04-16
+	- Finishing grabbing minigame
+	- Lots of systems and flow, from title to end of grabbing
+- 2026-04-17
+	- Some fixes on the grabbing minigame, and polish
+	- No longer reparenting fruit but loading it at minigame start
+	- Working on the chopping minigame
 
 ### To-do:
 - [x] Make settings menu an autoload with a signal, too messy to keep track of scene
 - [x] Find a way to pause the current node upon firing the settings menu
 - [ ] Art:
 	- [ ] Title art: gothic font for "Space Druid", regular font for "Licence Renewal"
-	- [ ] Repeating space background
+	- [x] Repeating space background
 	- [ ] Colored handles for sliders to match theme
 	- [ ] Chopped and ground fruit states
-	- [ ] "junk" for grabbing minigame
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card
 - [ ] Non-critical:
-	- [ ] Some button remains highlighted the first time I call the options menu in, idk why
+	- [ ] Some button remains highlighted the first time I call the options menu in, idk why. Probably hovering something, and not recalculating outline size

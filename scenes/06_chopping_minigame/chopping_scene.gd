@@ -6,14 +6,14 @@ extends Node2D
 # when both coords are set, draw cut line
 # then calculate score to later add to globals
 
-@onready var top_slider: Node2D = $TopSlider
-@onready var bottom_slider: Node2D = $BottomSlider
-@onready var laser: Node2D = $Laser
-@onready var cutting_board: Node2D = $"Cutting board"
-
-@onready var fruits_left_label: Label = $FruitsLeftLabel
-@onready var grounded_percent_label: Label = $GroundedPercentLabel
-@onready var rounds_left_label: Label = $RoundsLeftLabel
+@onready var minigame_area: Node2D = $MinigameArea
+@onready var top_slider: Node2D = $MinigameArea/TopSlider
+@onready var bottom_slider: Node2D = $MinigameArea/BottomSlider
+@onready var laser: Node2D = $MinigameArea/Laser
+@onready var cutting_board: Node2D = $"MinigameArea/Cutting board"
+@onready var fruits_left_label: Label = $CanvasLayer/FruitsLeftLabel
+@onready var grounded_percent_label: Label = $CanvasLayer/GroundedPercentLabel
+@onready var rounds_left_label: Label = $CanvasLayer/RoundsLeftLabel
 
 var top_coords: Vector2
 var bottom_coords: Vector2
@@ -33,6 +33,16 @@ func _ready() -> void:
 	SignalBus.laser_finished_firing.connect(restart_laser)
 	SignalBus.chopping_fruit_amt_changed.connect(update_fruit_amount)
 	SignalBus.chopping_happened.connect(update_grounded_percent)
+	get_tree().root.size_changed.connect(on_viewport_size_changed)
+
+	GameData.initiate_load_game_data()
+	
+	if GameData.current[GameData.KEY_CURRENT_MINIGAME] != GameData.Minigames.CHOPPING:
+		GameData.current[GameData.KEY_CURRENT_MINIGAME] = GameData.Minigames.CHOPPING
+	
+	GameData.initiate_save_game_data()
+	
+	minigame_area.position.x = (get_viewport_rect().size.x/2)-(240/2) 
 	cutting_board.spawn_fruit()
 
 func _input(event):
@@ -67,3 +77,7 @@ func update_rounds_left(amt: int) -> void:
 func update_grounded_percent(amt: int) -> void:
 	var grounded_percent: float = snapped((float(amt)/(GameData.total_fruits_amount*3))*100, 0.01)
 	grounded_percent_label.text = str("GROUNDED: ", grounded_percent, "%")
+
+#https://forum.godotengine.org/t/how-do-i-detect-when-the-window-is-resized/121381
+func on_viewport_size_changed():
+	minigame_area.position.x = (get_viewport_rect().size.x/2)-(240/2)

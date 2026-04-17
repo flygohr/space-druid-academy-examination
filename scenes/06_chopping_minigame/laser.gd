@@ -13,8 +13,8 @@ func set_coords(top: Vector2, bottom: Vector2) -> void:
 	top_coord = top
 	bottom_coord = bottom
 	
-	line_2d.points[0] = top_coord
-	line_2d.points[1] = bottom_coord
+	line_2d.points[0] = to_local(top_coord)
+	line_2d.points[1] = to_local(bottom_coord)
 	
 	# https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
 	for i in line_2d.points.size() - 1:

@@ -13,6 +13,43 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Animation" id="Animation_kp7qu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13725491, 0.1764706, 0.20784314, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_orgp6"]
+resource_name = "fadein"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.13725491, 0.1764706, 0.20784314, 0), Color(0.13725491, 0.1764706, 0.20784314, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xly0u"]
+_data = {
+&"RESET": SubResource("Animation_kp7qu"),
+&"fadein": SubResource("Animation_orgp6")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji1rd"]
 bg_color = Color(0.87058824, 0.79607844, 0.62352943, 1)
 border_width_bottom = 1
@@ -30,17 +67,14 @@ fruit_scene = ExtResource("2_g0x35")
 [node name="SpaceBackground" parent="." unique_id=2146281425 instance=ExtResource("3_ji1rd")]
 
 [node name="SpawnPath" type="Path2D" parent="." unique_id=860300810]
-position = Vector2(-17, -9)
-scale = Vector2(1.0416666, 1)
+position = Vector2(-0.6349176, -0.12499905)
+scale = Vector2(0.94246024, 0.83984375)
 curve = SubResource("Curve2D_g0x35")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath" unique_id=1228556626]
 position = Vector2(289.28003, -32)
 rotation = 3.1415927
 loop = false
-
-[node name="SpawnTimer" type="Timer" parent="." unique_id=97403253]
-wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768469732]
 
@@ -58,6 +92,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_ebebh")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TextureRect" unique_id=721201166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.13725491, 0.1764706, 0.20784314, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRect" unique_id=1654906319]
+root_node = NodePath("../ColorRect")
+libraries/ = SubResource("AnimationLibrary_xly0u")
 
 [node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=1144293377]
 custom_minimum_size = Vector2(0, 16)
@@ -197,5 +245,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

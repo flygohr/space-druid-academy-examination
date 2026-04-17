@@ -9,31 +9,35 @@
 [node name="ChoppingMinigame" type="Node2D" unique_id=418510966]
 script = ExtResource("1_47j87")
 
-[node name="TopSlider" parent="." unique_id=1567326803 instance=ExtResource("2_snsjb")]
+[node name="MinigameArea" type="Node2D" parent="." unique_id=1867627285]
+
+[node name="TopSlider" parent="MinigameArea" unique_id=1567326803 instance=ExtResource("2_snsjb")]
 position = Vector2(0, 16)
 
-[node name="BottomSlider" parent="." unique_id=1170147702 instance=ExtResource("2_snsjb")]
+[node name="BottomSlider" parent="MinigameArea" unique_id=1170147702 instance=ExtResource("2_snsjb")]
 position = Vector2(0, 128)
 
-[node name="Laser" parent="." unique_id=859753925 instance=ExtResource("3_g44pf")]
+[node name="Laser" parent="MinigameArea" unique_id=859753925 instance=ExtResource("3_g44pf")]
 
-[node name="Cutting board" parent="." unique_id=264996476 instance=ExtResource("4_6j0pb")]
+[node name="Cutting board" parent="MinigameArea" unique_id=264996476 instance=ExtResource("4_6j0pb")]
 position = Vector2(0, 48)
 fruit_scene = ExtResource("5_vwr26")
 
-[node name="FruitsLeftLabel" type="Label" parent="." unique_id=1844786514]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818522085]
+
+[node name="FruitsLeftLabel" type="Label" parent="CanvasLayer" unique_id=1844786514]
 offset_left = -39.0
 offset_right = 45.0
 offset_bottom = 13.0
 text = "FRUITS LEFT: 0"
 
-[node name="GroundedPercentLabel" type="Label" parent="." unique_id=221819366]
+[node name="GroundedPercentLabel" type="Label" parent="CanvasLayer" unique_id=221819366]
 offset_left = 60.0
 offset_right = 144.0
 offset_bottom = 13.0
 text = "GROUNDED: 0%"
 
-[node name="RoundsLeftLabel" type="Label" parent="." unique_id=383065369]
+[node name="RoundsLeftLabel" type="Label" parent="CanvasLayer" unique_id=383065369]
 offset_left = 146.0
 offset_right = 230.0
 offset_bottom = 13.0

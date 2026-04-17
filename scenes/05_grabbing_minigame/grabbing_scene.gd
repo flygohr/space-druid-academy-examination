@@ -2,8 +2,6 @@ extends Node2D
 
 @export var fruit_scene: PackedScene
 
-@onready var spawn_timer: Timer = $SpawnTimer
-
 @onready var top_message_label: Label = $CanvasLayer/TopBar/TopMessageLabel
 
 @onready var click_blocker: ColorRect = $CanvasLayer/ClickBlocker
@@ -20,6 +18,7 @@ extends Node2D
 @onready var ingredient_3_label: RichTextLabel = $CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3/MarginContainer/HBoxContainer/Ingredient3Label
 
 @onready var junk_label: RichTextLabel = $CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer/HBoxContainer/JunkLabel
+@onready var animation_player: AnimationPlayer = $CanvasLayer/TextureRect/AnimationPlayer
 
 var minigame_started: bool = false
 var grabbing_enabled: bool = false
@@ -51,10 +50,11 @@ var ingredient_3_current_qty: int = 0:
 		ingredient_3_current_qty = new_value
 		update_ingredient_3_label(new_value)
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.fruit_grabbed.connect(parse_grabbed_fruit)
+	SignalBus.spawn_fruit.connect(spawn_fruit)
+	get_tree().root.size_changed.connect(on_viewport_size_changed)
 	set_process(false)
 	
 	if GameData.current[GameData.KEY_IS_NEW_GAME] == true:
@@ -64,6 +64,9 @@ func _ready() -> void:
 		await PopupManager.next_button_pressed
 		PopupManager.show_popup_dialog("Try to zap only the required Space Fruit. Getting unnecessary ingredients will lower your final grade.", "Start")
 		await PopupManager.next_button_pressed
+	
+	animation_player.play_backwards("fadein")
+	await animation_player.animation_finished
 	
 	top_message_label.text = "HIT SPACE WHEN READY"
 	
@@ -110,7 +113,8 @@ func _input(event):
 	# elif check mouse position for fruit
 
 func start_countdown() -> void:
-	spawn_timer.start() #TODO: add some random spawns so it's already populated. and also, keep count of how many are spawned to keep a steady amount in circulation. this could be a better idea! spawn like 50, and keep track and spawn new ones when freed!
+	spawn_fruit(70)
+
 	top_message_label.text = "START IN 3..."
 	await get_tree().create_timer(1.0).timeout
 	top_message_label.text = "START IN 2..."
@@ -120,42 +124,47 @@ func start_countdown() -> void:
 	grabbing_enabled = true
 	click_blocker.hide()
 
-func spawn_fruit() -> void:
-	var new_fruit := fruit_scene.instantiate()
-	var picked_fruit = GameData.FRUIT_KEYS.pick_random() #TODO: weighted random
-	
-	#instead of calling a function here, set parameters as variables
-	new_fruit.fruit_type = str(picked_fruit)
-	new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
-	new_fruit.sprite_chopped_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.CHOPPED_TEXTURE]
-	new_fruit.sprite_powder_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.POWDER_TEXTURE]
-	new_fruit.grabbing_sprite_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SINGLE_TEXTURE]
-	new_fruit.is_animated = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.IS_ANIMATED]
-	new_fruit.speed = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SPEED]
-	new_fruit.path_complexity = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.PATH_COMPLEXITY]
-	
-	var start_point_ratio: float = randf()
-	path_follow_2d.progress_ratio = start_point_ratio
-	var start_point_pos: Vector2 = path_follow_2d.global_position
-	
-	new_fruit.position = start_point_pos
-	
-	var end_point_ratio: float = randf()
-	path_follow_2d.progress_ratio = end_point_ratio
-	var end_point_pos: Vector2 = path_follow_2d.global_position
-	
-	add_child(new_fruit)
-	new_fruit.start_pathing(start_point_pos, end_point_pos)
+func spawn_fruit(amt: int = 1) -> void:
+	for x in amt:
+		var new_fruit := fruit_scene.instantiate()
+		var picked_fruit = GameData.FRUIT_KEYS.pick_random() #TODO: weighted random
+		
+		#instead of calling a function here, set parameters as variables
+		new_fruit.fruit_type = str(picked_fruit)
+		print("Spawning ", picked_fruit)
+		new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
+		new_fruit.sprite_chopped_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.CHOPPED_TEXTURE]
+		new_fruit.sprite_powder_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.POWDER_TEXTURE]
+		new_fruit.grabbing_sprite_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SINGLE_TEXTURE]
+		new_fruit.is_animated = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.IS_ANIMATED]
+		new_fruit.speed = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SPEED]
+		new_fruit.path_complexity = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.PATH_COMPLEXITY]
+		
+		#TODO: use some offsetted rects or smth for spawn point, path doesn't scale well
+		var start_point_ratio: float = randf()
+		path_follow_2d.progress_ratio = start_point_ratio
+		var start_point_pos: Vector2 = path_follow_2d.global_position
+		
+		new_fruit.position = start_point_pos
+		
+		var end_point_ratio: float = randf()
+		path_follow_2d.progress_ratio = end_point_ratio
+		var end_point_pos: Vector2 = path_follow_2d.global_position
+		
+		add_child(new_fruit)
+		new_fruit.start_pathing(start_point_pos, end_point_pos)
 	
 func end_grabbing_minigame() -> void:
 	click_blocker.show()
 	grabbing_enabled = false
-	spawn_timer.stop()
 	
 	GameData.current[GameData.KEY_GRABBING_TIME] = elapsed_time
 	GameData.current[GameData.KEY_GRABBING_JUNK_AMT] = junk_collected
 	print(GameData.current_fruits)
 	SavesManager.save_game(GameData.current)
+	
+	animation_player.play("fadein")
+	await animation_player.animation_finished
 	
 	PopupManager.show_popup_dialog(str(
 		"Zapped all the ingredients!\n",
@@ -164,12 +173,9 @@ func end_grabbing_minigame() -> void:
 		ingredient_3_name.to_upper(), ": ", ingredient_3_current_qty, "/", ingredient_3_target_qty, "\n",
 		"UNNECESSARY FRUIT: ", junk_collected, "\n",
 		"TOTAL TIME: ", round_to_dec(elapsed_time,2), "s" #TODO: convert in minutes and seconds, same above
-	), "Continue")
+	), "Proceed")
 	await PopupManager.next_button_pressed
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_CHOPPING_MINIGAME])
-	
-func _on_spawn_timer_timeout() -> void:
-	spawn_fruit()
 	
 func parse_grabbed_fruit(type: String) -> void:
 	print("Grabbed ", type)
@@ -200,7 +206,11 @@ func update_ingredient_3_label(value: int) -> void:
 	
 func update_junk_label(value: int) -> void:
 	junk_label.text = str(value)
-	
+
 # https://forum.godotengine.org/t/how-to-round-to-a-specific-decimal-place/27552/2
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+	
+#https://forum.godotengine.org/t/how-do-i-detect-when-the-window-is-resized/121381
+func on_viewport_size_changed():
+	spawn_path.position.x = (get_viewport_rect().size.x/2)-(240/2)

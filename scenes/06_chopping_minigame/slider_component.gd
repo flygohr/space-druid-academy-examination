@@ -45,4 +45,4 @@ func stop_slider() -> void:
 	set_process(false)
 	is_accepting_input = false
 	is_sliding = false
-	slider_stopped.emit(marker_2d.global_position) #TODO: convert to actual position in middle of slider
+	slider_stopped.emit(marker_2d.global_position)

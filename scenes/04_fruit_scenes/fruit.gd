@@ -56,6 +56,7 @@ func _process(delta: float) -> void:
 	path_follow_2d.progress += delta * speed
 	fruit_shape.position = path_follow_2d.position
 	if path_follow_2d.progress_ratio >= .99:
+		SignalBus.spawn_fruit.emit()
 		queue_free()
 
 func start_pathing(start_pos: Vector2, end_pos: Vector2) -> void:
@@ -90,15 +91,10 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		if event.is_action_pressed("Grab"):
 			# print("Grabbing ", fruit_type)
 			SignalBus.fruit_grabbed.emit(fruit_type)
-			GameData.current_fruits.append(self)
-			reparent(get_node("/root/GameData"))
+			SignalBus.spawn_fruit.emit()
 			set_process(false)
-			grabbing_collision.hide()
-			reset_transforms()
+			grabbing_collision.process_mode = Node.PROCESS_MODE_DISABLED
 			hide() #TODO: play zapping animation
-
-func reset_transforms() -> void:
-	fruit_shape.position = Vector2.ZERO
 
 func _on_timer_timeout() -> void:
 	if sprite_full.frame == 1:

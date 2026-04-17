@@ -196,6 +196,7 @@ func _parse_data(data: String) -> Dictionary:
 	if json.parse(data) == OK:
 		var parsed_data: Dictionary = json.get_data()
 		for key in parsed_data:
+			print(parsed_data[key])
 			if typeof(parsed_data[key]) == TYPE_DICTIONARY and parsed_data[key].has("type") == true: # Check for known Variants to convert back
 				match parsed_data[key]["type"]:
 					"Vector2": parsed_data[key] = _dict_to_vec2(parsed_data[key])
