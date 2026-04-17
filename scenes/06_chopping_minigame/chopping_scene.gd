@@ -94,16 +94,19 @@ func _ready() -> void:
 	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_1_texture.texture = ingredient_1_icon_file
 	ingredient_1_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_QTY]
+	ingredient_1_label.text = str("0/",ingredient_1_target_qty)
 	
 	ingredient_2_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_FRUIT_NAME]
 	var ingredient_2_icon_file = load(GameData.FRUIT_DATA[ingredient_2_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_2_texture.texture = ingredient_2_icon_file
 	ingredient_2_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_QTY]
+	ingredient_2_label.text = str("0/",ingredient_2_target_qty)
 	
 	ingredient_3_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_FRUIT_NAME]
 	var ingredient_3_icon_file = load(GameData.FRUIT_DATA[ingredient_3_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_3_texture.texture = ingredient_3_icon_file
 	ingredient_3_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_QTY]
+	ingredient_3_label.text = str("0/",ingredient_3_target_qty)
 
 func _input(event):
 	if event.is_action_pressed("Interact") and !minigame_started:

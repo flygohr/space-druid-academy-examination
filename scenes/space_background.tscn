@@ -6,9 +6,10 @@
 process_mode = 3
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=616556662]
+scroll_offset = Vector2(240, 0)
 repeat_size = Vector2(240, 0)
 autoscroll = Vector2(10, 0)
-repeat_times = 5
+repeat_times = 11
 follow_viewport = false
 ignore_camera_scroll = true
 
