@@ -101,6 +101,7 @@ const KEY_CURRENT_LEVEL: String = "current level"
 const KEY_GRABBING_TIME: String = "grabbing time"
 const KEY_GRABBING_JUNK_AMT: String = "grabbing junk"
 const KEY_SHOTS_FIRED: String = "shots fired"
+const KEY_REVOLUTIONS_DONE: String = "revolutions done"
 
 # DEFAULT GAME DATA
 # What to load into a new save
@@ -113,6 +114,7 @@ const DEFAULT_GAME_DATA: Dictionary = {
 	KEY_GRABBING_TIME: 0.0,
 	KEY_GRABBING_JUNK_AMT: 0,
 	KEY_SHOTS_FIRED: 0,
+	KEY_REVOLUTIONS_DONE: 0
 }
 
 # CURRENT GAME DATA

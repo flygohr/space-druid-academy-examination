@@ -20,5 +20,6 @@ signal fruit_chopped(type: String)
 signal laps_updated(value: int)
 signal rocket_started
 signal rocket_fuel_empty
+signal finished_rotating
 
 @warning_ignore_restore("unused_signal")

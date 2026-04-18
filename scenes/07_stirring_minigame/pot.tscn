@@ -17,7 +17,7 @@ texture = ExtResource("2_7awiv")
 [node name="LadleAndLiquid" type="Node2D" parent="." unique_id=1818878734]
 
 [node name="LiquidSprite" type="Sprite2D" parent="LadleAndLiquid" unique_id=1931602677]
-modulate = Color(0.4392157, 0.74509805, 0.63529414, 1)
+modulate = Color(0.72489744, 0.4603449, 0.6476361, 1)
 texture = ExtResource("3_5unov")
 
 [node name="LadleSprite" type="Sprite2D" parent="LadleAndLiquid" unique_id=310400166]

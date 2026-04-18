@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cnjyvj5ej8m1f" path="res://scenes/07_stirring_minigame/fuel.gd" id="7_gtdlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50rgb"]
-size = Vector2(64, 144.18182)
+size = Vector2(64, 116)
 
 [sub_resource type="Animation" id="Animation_dw4e3"]
 length = 0.001
@@ -120,6 +120,12 @@ _data = {
 &"firing": SubResource("Animation_pcd4y")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtdlt"]
+bg_color = Color(0.54567224, 0.6498944, 0.25238225, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.078431375, 0.11372549, 0.12941177, 1)
+
 [node name="Rocket" type="Node2D" unique_id=1586514497]
 script = ExtResource("1_k1m8p")
 
@@ -148,22 +154,28 @@ centered = false
 position = Vector2(32, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1504387517]
-position = Vector2(32, 88.09091)
+position = Vector2(32, 67)
 shape = SubResource("RectangleShape2D_50rgb")
-
-[node name="Fuel" type="ProgressBar" parent="." unique_id=551027760]
-offset_left = -1.0
-offset_top = 27.0
-offset_right = 15.0
-offset_bottom = 161.0
-theme = ExtResource("6_pcd4y")
-value = 100.0
-fill_mode = 3
-show_percentage = false
-script = ExtResource("7_gtdlt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=50536600]
 libraries/ = SubResource("AnimationLibrary_gtdlt")
 speed_scale = 3.0
 
-[connection signal="value_changed" from="Fuel" to="Fuel" method="_on_value_changed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1836428842]
+
+[node name="Fuel" type="ProgressBar" parent="CanvasLayer" unique_id=551027760]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -133.0
+offset_right = 15.0
+grow_vertical = 0
+theme = ExtResource("6_pcd4y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gtdlt")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("7_gtdlt")
+
+[connection signal="value_changed" from="CanvasLayer/Fuel" to="CanvasLayer/Fuel" method="_on_value_changed"]

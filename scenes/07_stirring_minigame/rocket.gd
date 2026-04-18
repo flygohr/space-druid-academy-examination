@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
-@onready var fuel: ProgressBar = $Fuel
+@onready var fuel: ProgressBar = $CanvasLayer/Fuel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var fuel_consumption: float = 12
