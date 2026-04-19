@@ -83,7 +83,7 @@ const LEVELS: Dictionary = {
 # CHOPPING MINIGAME
 
 # STIRRING MINIGAME
-var stirring_ongoing = true
+var stirring_ongoing = false
 
 var current_chopped_hits: int = 0:
 	set(new_value):
