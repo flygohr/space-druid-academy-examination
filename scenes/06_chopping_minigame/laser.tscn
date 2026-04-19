@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db7kqba0u74ss"]
 
 [ext_resource type="Script" uid="uid://db5tskrjlejip" path="res://scenes/06_chopping_minigame/laser.gd" id="1_kd2n5"]
+[ext_resource type="AudioStream" uid="uid://bifmkotpl78nt" path="res://audio/SFX/517763__danlucaz__laser-fx-3.wav" id="2_ptx30"]
 
 [node name="Laser" type="Node2D" unique_id=194175759]
 script = ExtResource("1_kd2n5")
@@ -15,3 +16,7 @@ default_color = Color(0.60784316, 0.78039217, 0.85490197, 1)
 [node name="InnerColor" type="Line2D" parent="." unique_id=1662107902]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1298497426]
+stream = ExtResource("2_ptx30")
+bus = &"SFX"

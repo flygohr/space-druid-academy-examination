@@ -27,12 +27,14 @@ func _process(delta: float) -> void:
 		SignalBus.rocket_fuel_empty.emit()
 		animation_player.play_backwards("firing")
 		area_2d.process_mode = Node.PROCESS_MODE_DISABLED 
+		$AudioStreamPlayer2D.stop()
 		set_process(false)
 
 func _input(event):
 	if event.is_action_pressed("Interact") and GameData.stirring_ongoing == true and fuel.value > 0:
 		set_process(true)
 		animation_player.play("firing")
+		$AudioStreamPlayer2D.play()
 		if fired_signal_sent == false:
 			SignalBus.rocket_started.emit()
 			fired_signal_sent = true
@@ -40,5 +42,6 @@ func _input(event):
 		
 	if event.is_action_released("Interact") and GameData.stirring_ongoing == true and fuel.value > 0:
 		animation_player.play_backwards("firing")
+		$AudioStreamPlayer2D.stop()
 		set_process(false)
 		area_2d.process_mode = Node.PROCESS_MODE_DISABLED

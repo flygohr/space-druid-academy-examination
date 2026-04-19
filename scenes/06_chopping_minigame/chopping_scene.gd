@@ -182,6 +182,7 @@ func end_chopping_minigame() -> void:
 		"You chopped all the ingredients!\n\n",
 		"Took you ", shots_fired, " laser shots." #TODO: convert in minutes and seconds, same above
 	), "Proceed")
+	MusicManager.play_success()
 	await PopupManager.next_button_pressed
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_STIRRING_MINIGAME])
 	

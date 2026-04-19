@@ -43,6 +43,7 @@ func _input(event):
 
 func start_slider() -> void:
 	set_process(true)
+	$AudioStreamPlayer2D2.play()
 	is_accepting_input = true
 	is_sliding = true
 
@@ -50,6 +51,7 @@ func stop_slider() -> void:
 	set_process(false)
 	is_accepting_input = false
 	is_sliding = false
+	$AudioStreamPlayer2D.play()
 	slider_stopped.emit(marker_2d.global_position)
 
 func firing() -> void:

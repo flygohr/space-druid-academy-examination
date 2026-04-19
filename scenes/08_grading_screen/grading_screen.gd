@@ -22,12 +22,17 @@ func _ready() -> void:
 		"potion of ",
 		names.pick_random()
 	).to_upper()
+	MusicManager.play_success()
+
 	
 	grade_label.text = GameData.calculate_final_grade()
 	
 	await PopupManager.next_button_pressed
 	PopupManager.show_popup_dialog(str("You have completed the Space Potion brewing process. Please proceed to the evaluation and grading."), "Proceed")
 	await PopupManager.next_button_pressed
+	if grade_label.text == "F":
+		$AudioStreamPlayer2D2.play()
+	else: $AudioStreamPlayer2D.play()
 
 func _on_continue_button_pressed() -> void:
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_REPORT_CARD])

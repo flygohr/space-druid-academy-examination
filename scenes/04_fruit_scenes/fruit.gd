@@ -8,6 +8,7 @@ class_name SpaceFruit
 @onready var grabbing_collision: TextureButton = $FruitShape/CollisionChecks/GrabbingCollision
 @onready var fruit_shape: Node2D = $FruitShape
 @onready var timer: Timer = $Timer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var sprite_full: Sprite2D = $FruitShape/Sprites/SpriteFull
 @onready var sprite_chopped: Sprite2D = $FruitShape/Sprites/SpriteChopped
@@ -99,3 +100,4 @@ func _on_grabbing_collision_pressed() -> void:
 		set_process(false)
 		grabbing_collision.process_mode = Node.PROCESS_MODE_DISABLED
 		hide() #TODO: play zapping animation
+		audio_stream_player_2d.play()

@@ -33,6 +33,7 @@ func set_coords(top: Vector2, bottom: Vector2) -> void:
 
 func start_laser() -> void:
 	show()
+	$AudioStreamPlayer2D.play()
 	SignalBus.laser_fired.emit()
 	await get_tree().create_timer(1.0).timeout
 	hide_laser()

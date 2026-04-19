@@ -4,6 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://c5mqaxrfrftmv" path="res://audio/SFX/478196__jonnyruss01__click_2.wav" id="2_034fw"]
 [ext_resource type="AudioStream" uid="uid://bn1nyrywuuv28" path="res://audio/music/main_loop.ogg" id="2_rhnub"]
 [ext_resource type="AudioStream" uid="uid://damfpovbski74" path="res://audio/SFX/655157__bernhoftbret__clicking-4.mp3" id="4_722mk"]
+[ext_resource type="AudioStream" uid="uid://cy10uj02yrcco" path="res://audio/SFX/764796__at0mcat__wrong.ogg" id="5_3r5e8"]
+[ext_resource type="AudioStream" uid="uid://c0perp85cl43" path="res://audio/SFX/242501__gabrielaraujo__powerupsuccess.wav" id="6_06o4w"]
 
 [node name="MusicManager" type="Node" unique_id=2088791662]
 process_mode = 3
@@ -30,4 +32,11 @@ volume_db = -20.0
 bus = &"SFX"
 
 [node name="WrongFruitSFX" type="AudioStreamPlayer2D" parent="." unique_id=1500997387]
+stream = ExtResource("5_3r5e8")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="SuccessSFX" type="AudioStreamPlayer2D" parent="." unique_id=1197733558]
+stream = ExtResource("6_06o4w")
+volume_db = 5.0
 bus = &"SFX"

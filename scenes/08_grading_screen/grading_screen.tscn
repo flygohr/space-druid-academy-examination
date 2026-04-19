@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="5_acwfy"]
 [ext_resource type="PackedScene" uid="uid://c0oishe0dw761" path="res://scenes/02_potion/potion.tscn" id="6_18vm0"]
 [ext_resource type="FontFile" uid="uid://cq8ogbmqxsgxt" path="res://assets/fonts/bitmgothic.medium.ttf" id="7_3prbs"]
+[ext_resource type="AudioStream" uid="uid://bpdxqjtjkwsne" path="res://audio/SFX/404358__kagateni__success.wav" id="9_acwfy"]
+[ext_resource type="AudioStream" uid="uid://bemn7ti1esxfc" path="res://audio/SFX/456963__funwithsound__failure-drum-sound-effect-2.mp3" id="10_m14w4"]
 
 [node name="GradingScreen" type="Node2D" unique_id=886520317]
 script = ExtResource("1_elw8l")
@@ -127,5 +129,14 @@ text = "DETAILS"
 [node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" unique_id=1854196964]
 script = ExtResource("5_acwfy")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1606457962]
+stream = ExtResource("9_acwfy")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1267106582]
+stream = ExtResource("10_m14w4")
+volume_db = 7.0
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

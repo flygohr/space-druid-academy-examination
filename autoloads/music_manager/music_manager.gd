@@ -10,6 +10,7 @@ extends Node
 @onready var click_sfx: AudioStreamPlayer2D = $ClickSFX
 @onready var hover_sfx: AudioStreamPlayer2D = $HoverSFX
 @onready var wrong_fruit_sfx: AudioStreamPlayer2D = $WrongFruitSFX
+@onready var success_sfx: AudioStreamPlayer2D = $SuccessSFX
 
 func _ready() -> void:
 	music_player.play()
@@ -23,3 +24,6 @@ func play_hover() -> void:
 	
 func play_wrong_fruit() -> void:
 	wrong_fruit_sfx.play()
+	
+func play_success() -> void:
+	success_sfx.play()

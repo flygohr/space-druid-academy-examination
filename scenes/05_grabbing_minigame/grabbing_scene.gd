@@ -174,6 +174,7 @@ func end_grabbing_minigame() -> void:
 		"UNNECESSARY FRUIT: ", junk_collected, "\n",
 		"TOTAL TIME: ", round_to_dec(elapsed_time,2), "s" #TODO: convert in minutes and seconds, same above
 	), "Proceed")
+	MusicManager.play_success()
 	await PopupManager.next_button_pressed
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_CHOPPING_MINIGAME])
 	
@@ -193,6 +194,7 @@ func parse_grabbed_fruit(type: String) -> void:
 				junk_collected += 1
 			else: ingredient_3_current_qty += 1
 		_:
+			MusicManager.play_wrong_fruit()
 			junk_collected += 1
 
 func update_ingredient_1_label(value: int) -> void:
