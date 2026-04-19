@@ -1,3 +1,153 @@
 [gd_scene format=3 uid="uid://bpntbeuxe2b4n"]
 
+[ext_resource type="Script" uid="uid://cy154pdgbl34" path="res://scenes/09_report_card/report_card.gd" id="1_inuy6"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="1_u6k2l"]
+[ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_inuy6"]
+[ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/00_menu_button/menu_button.tscn" id="3_i3n1f"]
+[ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="4_xru5d"]
+[ext_resource type="Texture2D" uid="uid://bwlwalwpyfn0e" path="res://assets/images/parchment.png" id="5_i7qch"]
+
 [node name="ReportCard" type="Node2D" unique_id=927615786]
+script = ExtResource("1_inuy6")
+
+[node name="SpaceBackground" parent="." unique_id=2146281425 instance=ExtResource("1_u6k2l")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1905322143]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=101103866]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_inuy6")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=153844639]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1860788447]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="MenuButton" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=607294290 instance=ExtResource("3_i3n1f")]
+layout_mode = 2
+
+[node name="ButtonEffectsComponent2" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2/MenuButton" unique_id=837083724]
+script = ExtResource("4_xru5d")
+metadata/_custom_type_script = "uid://c3p5hehud2mfn"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1684469358]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_i7qch")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect" unique_id=1518057919]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer" unique_id=100550491]
+layout_mode = 2
+alignment = 1
+
+[node name="PotionNameLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=797671333]
+layout_mode = 2
+text = "REPORT CARD"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Zapping" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1785522055]
+layout_mode = 2
+
+[node name="ZappingStats" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Zapping" unique_id=1800193694]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ZAPPING: 120s, JUNK: 41"
+fit_content = true
+vertical_alignment = 1
+
+[node name="ZappingGrade" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Zapping" unique_id=953421885]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "S+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chopping" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1483865098]
+layout_mode = 2
+
+[node name="ChoppingStats" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Chopping" unique_id=1339999376]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LASERS FIRED: 15"
+fit_content = true
+vertical_alignment = 1
+
+[node name="ChoppingGrade" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Chopping" unique_id=2064259287]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "S+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stirring" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=496124377]
+layout_mode = 2
+
+[node name="StirringStats" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Stirring" unique_id=1042447615]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LADLE SPINS: 36"
+fit_content = true
+vertical_alignment = 1
+
+[node name="StirringGrade" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/Stirring" unique_id=186715255]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "S+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=595082564]
+layout_mode = 2
+text = "RESULT: LICENCE RENEWED"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1048996433]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1520989636]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "FILE A RECOURSE"
+
+[node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" unique_id=981722339]
+script = ExtResource("4_xru5d")
+metadata/_custom_type_script = "uid://c3p5hehud2mfn"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

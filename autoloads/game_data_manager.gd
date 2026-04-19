@@ -101,7 +101,9 @@ const KEY_CURRENT_LEVEL: String = "current level"
 const KEY_GRABBING_TIME: String = "grabbing time"
 const KEY_GRABBING_JUNK_AMT: String = "grabbing junk"
 const KEY_SHOTS_FIRED: String = "shots fired"
+const KEY_COLOR_PICKED: String = "color picked"
 const KEY_REVOLUTIONS_DONE: String = "revolutions done"
+const KEY_RESTARTS: String = "restarts"
 
 # DEFAULT GAME DATA
 # What to load into a new save
@@ -114,7 +116,9 @@ const DEFAULT_GAME_DATA: Dictionary = {
 	KEY_GRABBING_TIME: 0.0,
 	KEY_GRABBING_JUNK_AMT: 0,
 	KEY_SHOTS_FIRED: 0,
-	KEY_REVOLUTIONS_DONE: 0
+	KEY_COLOR_PICKED: Color(0.831, 0.8, 0.434, 1.0),
+	KEY_REVOLUTIONS_DONE: 0,
+	KEY_RESTARTS: 0
 }
 
 # CURRENT GAME DATA
@@ -136,3 +140,107 @@ func initiate_load_game_data() -> void:
 
 func initiate_save_game_data() -> void:
 	SavesManager.save_game(current.duplicate_deep(), active_save_slot)
+
+func calculate_final_grade() -> String:
+	
+	var grabbing_grade: int = calculate_grabbing_grade()
+	var chopping_grade: int = calculate_chopping_grade()
+	var stirring_grade: int = calculate_stirring_grade()
+	
+	var final_grade: int = (grabbing_grade+chopping_grade+stirring_grade)/3
+	
+	match final_grade:
+		1: return "[color=0EB59C]S+[/color]"
+		2: return "[color=23A6A3]S[/color]"
+		3: return "[color=23A655]A[/color]"
+		4: return "B"
+		5: return "C"
+		6: return "D"
+		_: return "F"
+	
+func calculate_grabbing_grade() -> int:
+	# Calculate timing grade
+	var time_grade: int
+	var sbase: float = 10.00
+	var gap: float = 5.00
+	var time: float = current[KEY_GRABBING_TIME]
+	
+	if time <= sbase:
+		time_grade = 1
+	elif time > sbase and time <= sbase+gap:
+		time_grade = 2
+	elif time > (sbase+(gap*1)) and time <= (sbase+(gap*2)):
+		time_grade = 3
+	elif time > (sbase+(gap*2)) and time <= (sbase+(gap*3)):
+		time_grade = 4
+	elif time > (sbase+(gap*3)) and time <= (sbase+(gap*5)):
+		time_grade = 5
+	elif time > (sbase+(gap*5)) and time <= (sbase+(gap*6)):
+		time_grade = 6
+	elif time > (sbase+(gap*6)):
+		time_grade = 7
+	
+	# calculate junk grade:
+	var junk_grade: int
+	var junk_gap: int = 3
+	var junk: int = current[KEY_GRABBING_JUNK_AMT]
+	if junk == 0:
+		junk_grade = 1
+	elif junk > 0 and junk <= junk_gap:
+		junk_grade = 2
+	elif junk > junk_gap and junk <= junk_gap*2:
+		junk_grade = 3
+	elif junk > junk_gap*2 and junk <= junk_gap*3:
+		junk_grade = 4
+	elif junk > junk_gap*3 and junk <= junk_gap*4:
+		junk_grade = 4
+	elif junk > junk_gap*4 and junk <= junk_gap*5:
+		junk_grade = 5
+	elif junk > junk_gap*5 and junk <= junk_gap*6:
+		junk_grade = 6
+	elif junk > junk_gap*6:
+		junk_grade = 7
+	
+	var final_grade: int = (time_grade + junk_grade)/2
+	
+	return final_grade
+	
+func calculate_chopping_grade() -> int:
+	var laser_fired: int = current[KEY_SHOTS_FIRED]
+	var sbase: int = 3
+	var gap: int = 2
+	
+	if laser_fired <= sbase:
+		return 1
+	elif laser_fired > sbase and laser_fired <= sbase+gap:
+		return 2
+	elif laser_fired > sbase+gap and laser_fired <= sbase+(gap*2):
+		return 3
+	elif laser_fired > sbase+(gap*2) and laser_fired <= sbase+(gap*3):
+		return 4
+	elif laser_fired > sbase+(gap*3) and laser_fired <= sbase+(gap*4):
+		return 5
+	elif laser_fired > sbase+(gap*4) and laser_fired <= sbase+(gap*5):
+		return 6
+	else:
+		return 7
+
+func calculate_stirring_grade() -> int:
+	var laser_fired: int = current[KEY_REVOLUTIONS_DONE]
+	var fbase: int = 10
+	var gap: int = 5
+	
+	if laser_fired <= fbase:
+		return 7
+	elif laser_fired > fbase and laser_fired <= fbase+gap:
+		return 6
+	elif laser_fired > fbase+gap and laser_fired <= fbase+(gap*2):
+		return 5
+	elif laser_fired > fbase+(gap*2) and laser_fired <= fbase+(gap*3):
+		return 4
+	elif laser_fired > fbase+(gap*3) and laser_fired <= fbase+(gap*4):
+		return 3
+	elif laser_fired > fbase+(gap*4) and laser_fired <= fbase+(gap*5):
+		return 2
+	else:
+		return 1

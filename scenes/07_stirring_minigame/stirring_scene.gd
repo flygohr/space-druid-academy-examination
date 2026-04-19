@@ -4,6 +4,7 @@ extends Node2D
 
 var can_start: bool = false
 var laps: int = 0
+var color_picked: Color 
 
 func _ready() -> void:
 	SignalBus.laps_updated.connect(update_laps)
@@ -29,12 +30,9 @@ func update_laps(value: int) -> void:
 	laps = value
 
 func finish_minigame() -> void:
-	set_process(false)
 	GameData.current[GameData.KEY_REVOLUTIONS_DONE] = laps
 	GameData.initiate_save_game_data()
-	PopupManager.show_popup_dialog(str("Done! You managed to spin the ladle ", laps, " times. \n\n Please proceed to the evaluation screen."), "Proceed")
-	await PopupManager.next_button_pressed
-	# change scene
+	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_GRADING_SCREEN])
 
 #https://forum.godotengine.org/t/how-do-i-detect-when-the-window-is-resized/121381
 func on_viewport_size_changed():

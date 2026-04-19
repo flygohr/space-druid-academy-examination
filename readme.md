@@ -37,16 +37,21 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - 2026-04-18
 	- Idk if I'll make it in time
 	- Reduced scope of chopping minigame, can expand if enough time
+-2026-04-19
+	- Finalizing the game, will need to cut replayability for the jam, will add more in the "clean up week" eventually
+	- Adding grade screen
+	- Adding "post game dev message"
+	- Adding restart prompt and newgame = false to get rid of msgs
+	- Adding sound
 
 ### To-do:
 - [x] Make settings menu an autoload with a signal, too messy to keep track of scene
 - [x] Find a way to pause the current node upon firing the settings menu
 - [ ] Art:
-	- [ ] Title art: gothic font for "Space Druid", regular font for "Licence Renewal"
+	- [x] Title art: gothic font for "Space Druid", regular font for "Licence Renewal"
 	- [x] Repeating space background
 	- [ ] Colored handles for sliders to match theme
 	- [x] Chopped fruit states
-	- [ ] More opaque chopped fruits?
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card

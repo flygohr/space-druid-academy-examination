@@ -11,6 +11,8 @@ var min_rotation: float = 0.0
 var max_rotation: float = 0.5
 var drag: float = 0.01
 
+var picked_color: Color
+
 var colors = [
 	Color(0.755, 0.606, 0.345, 1.0),
 	Color(0.929, 0.47, 0.507, 1.0),
@@ -34,7 +36,9 @@ var laps: int = 0:
 func _ready() -> void:
 	SignalBus.rocket_fuel_empty.connect(stop_rotation)
 	SignalBus.rocket_started.connect(set_minimum_rotation)
-	liquid_sprite.modulate = colors.pick_random()
+	picked_color = colors.pick_random()
+	GameData.current[GameData.KEY_COLOR_PICKED] = picked_color
+	liquid_sprite.modulate = picked_color
 
 func _process(delta: float) -> void:
 	match accelerating:

@@ -15,8 +15,13 @@ extends Node2D
 @onready var ingredient_3_name_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/Ingredient_3_Name
 
 func _ready() -> void:
+	var current_restarts: int = int(GameData.current[GameData.KEY_RESTARTS])
+	current_restarts += 1
+	GameData.current[GameData.KEY_RESTARTS] = current_restarts
+	
 	if GameData.current[GameData.KEY_IS_NEW_GAME] == true:
 		play_tutorial()
+	else: play_recourse()
 		
 	assignment_label.text = str(
 		"Assignment #",
@@ -77,6 +82,18 @@ func play_tutorial() -> void:
 	
 	PopupManager.show_popup_dialog("Please proceed to your first Assignment and familiarize with the ingredients list.", "Start")
 	await PopupManager.next_button_pressed
+	
+func play_recourse() -> void:
+	if(GameData.current[GameData.KEY_RESTARTS]) == 1:
+		PopupManager.show_popup_dialog("From the dev: you have completed the game! I had bigger plans for it, but I'm still new to game jams and I definitely overscoped...")
+		await PopupManager.next_button_pressed
+		PopupManager.show_popup_dialog("I wanted to have at least a few more levels, with different Space Fruit with different rarities and behaviors.")
+		await PopupManager.next_button_pressed
+		PopupManager.show_popup_dialog("But alas, this is what I managed to put together! You are free to retry the level to better your grade, or exit now...")
+		await PopupManager.next_button_pressed
+	
+	PopupManager.show_popup_dialog("Your request to re-submit your Licence Renewal has been accepted. Please proceed to the assignment.", "Proceed")
+		
 
 func _on_start_button_pressed() -> void:
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_GRABBING_MINIGAME])
