@@ -84,17 +84,18 @@ func _on_fruit_collision_full_area_exited(area: Area2D) -> void:
 		#GameData.current_chopped_hits += 1
 		#GameData.current_fruits_amount -= 1
 
-func _on_color_rect_gui_input(event: InputEvent) -> void:
-		if event.is_action_pressed("Grab"):
-			# print("Grabbing ", fruit_type)
-			SignalBus.fruit_grabbed.emit(fruit_type)
-			SignalBus.spawn_fruit.emit()
-			set_process(false)
-			grabbing_collision.process_mode = Node.PROCESS_MODE_DISABLED
-			hide() #TODO: play zapping animation
-
 func _on_timer_timeout() -> void:
 	if sprite_full.frame == 1:
 		sprite_full.frame = 0
 	elif sprite_full.frame == 0:
 		sprite_full.frame = 1
+
+
+func _on_grabbing_collision_pressed() -> void:
+
+		# print("Grabbing ", fruit_type)
+		SignalBus.fruit_grabbed.emit(fruit_type)
+		SignalBus.spawn_fruit.emit()
+		set_process(false)
+		grabbing_collision.process_mode = Node.PROCESS_MODE_DISABLED
+		hide() #TODO: play zapping animation

@@ -87,7 +87,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5cuid")
 
 [node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=2025340051]
 layout_mode = 2
-text = "HIT SPACE TO START CHOPPING"
+text = "CLICK TO START CHOPPING"
 horizontal_alignment = 1
 vertical_alignment = 1
 

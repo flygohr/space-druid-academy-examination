@@ -14,6 +14,7 @@ var names: Array = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.initiate_load_game_data()
 	PopupManager.show_popup_dialog(str("Done! You managed to spin the ladle ",
 	GameData.current[GameData.KEY_REVOLUTIONS_DONE],
 	 " times."))

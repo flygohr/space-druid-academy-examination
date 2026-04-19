@@ -55,6 +55,7 @@ var minigame_started: bool = false
 var shots_fired: int = 0
 
 var minigame_ended: bool = false
+var is_popup_dismissed: bool = false
 
 # TODO: load ingredients
 # TODO: update ingredients as I chop
@@ -74,8 +75,6 @@ func _ready() -> void:
 	if GameData.current[GameData.KEY_CURRENT_MINIGAME] != GameData.Minigames.CHOPPING:
 		GameData.current[GameData.KEY_CURRENT_MINIGAME] = GameData.Minigames.CHOPPING
 	
-	GameData.initiate_save_game_data()
-	
 	minigame_area.position.x = (get_viewport_rect().size.x/2)-(240/2) 
 	cutting_board.spawn_fruit()
 	
@@ -84,11 +83,9 @@ func _ready() -> void:
 		await PopupManager.next_button_pressed
 		PopupManager.show_popup_dialog("Everything you zapped with your Teleportation Gun is inside the LCB. Try to align the laser to chop the all the Space Fruit in the least amount of shots!")
 		await PopupManager.next_button_pressed
-		
-	animation_player.play_backwards("fadein")
-	await animation_player.animation_finished
-	
-	top_message_label.text = "HIT SPACE WHEN READY"
+		animation_player.play_backwards("fadein")
+		await animation_player.animation_finished
+	is_popup_dismissed = true
 	
 	ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
 	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 
@@ -109,14 +106,14 @@ func _ready() -> void:
 	ingredient_3_label.text = str("0/",ingredient_3_target_qty)
 
 func _input(event):
-	if event.is_action_pressed("Interact") and !minigame_started:
-		top_message_label.text = "HIT SPACE TO LOCK THE TOP"
+	if event.is_action_pressed("Interact") and !minigame_started and is_popup_dismissed == true:
+		top_message_label.text = "CLICK TO LOCK THE TOP"
 		top_slider.start_slider()
 		minigame_started = true
 
 func start_second_slider(coords: Vector2) -> void:
 	top_coords = coords
-	top_message_label.text = "HIT SPACE TO LOCK THE BOTTOM"
+	top_message_label.text = "CLICK TO LOCK THE BOTTOM"
 	bottom_slider.start_slider()
 
 func draw_laser(coords: Vector2) -> void:
@@ -127,7 +124,7 @@ func draw_laser(coords: Vector2) -> void:
 	top_message_label.text = "FIRE!"
 	
 func restart_laser() -> void:
-	top_message_label.text = "HIT SPACE TO START CHOPPING"
+	top_message_label.text = "CLICK TO START CHOPPING"
 	minigame_started = false
 
 func update_rounds() -> void:
@@ -175,7 +172,8 @@ func end_chopping_minigame() -> void:
 	
 	# stop interacting with the laser
 	GameData.current[GameData.KEY_SHOTS_FIRED] = shots_fired
-	SavesManager.save_game(GameData.current)
+	GameData.initiate_save_game_data()
+	
 	
 	animation_player.play("fadein")
 	await animation_player.animation_finished

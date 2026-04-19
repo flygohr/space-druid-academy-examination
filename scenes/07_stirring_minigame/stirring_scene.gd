@@ -7,6 +7,7 @@ var laps: int = 0
 var color_picked: Color 
 
 func _ready() -> void:
+	GameData.initiate_load_game_data()
 	SignalBus.laps_updated.connect(update_laps)
 	SignalBus.finished_rotating.connect(finish_minigame)
 	minigame_scene.position.x = (get_viewport_rect().size.x/2)-(240/2)

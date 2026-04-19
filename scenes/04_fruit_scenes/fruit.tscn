@@ -53,5 +53,5 @@ wait_time = 2.0
 [connection signal="area_entered" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_entered"]
 [connection signal="area_exited" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_exited"]
 [connection signal="area_entered" from="FruitShape/CollisionChecks/FruitCollisionChopped" to="." method="_on_fruit_collision_chopped_area_entered"]
-[connection signal="gui_input" from="FruitShape/CollisionChecks/GrabbingCollision" to="." method="_on_color_rect_gui_input"]
+[connection signal="pressed" from="FruitShape/CollisionChecks/GrabbingCollision" to="." method="_on_grabbing_collision_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

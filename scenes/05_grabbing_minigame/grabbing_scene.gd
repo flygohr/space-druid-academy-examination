@@ -50,8 +50,11 @@ var ingredient_3_current_qty: int = 0:
 		ingredient_3_current_qty = new_value
 		update_ingredient_3_label(new_value)
 
+var is_popup_dismissed: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.initiate_load_game_data()
 	spawn_path.position.x = (get_viewport_rect().size.x/2)-(240/2)
 	SignalBus.fruit_grabbed.connect(parse_grabbed_fruit)
 	SignalBus.spawn_fruit.connect(spawn_fruit)
@@ -65,11 +68,10 @@ func _ready() -> void:
 		await PopupManager.next_button_pressed
 		PopupManager.show_popup_dialog("Try to zap only the required Space Fruit. Getting unnecessary ingredients will lower your final grade.", "Start")
 		await PopupManager.next_button_pressed
+		animation_player.play_backwards("fadein")
+		await animation_player.animation_finished
 	
-	animation_player.play_backwards("fadein")
-	await animation_player.animation_finished
-	
-	top_message_label.text = "HIT SPACE TO START"
+	is_popup_dismissed = true
 	
 	ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
 	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 
@@ -107,7 +109,7 @@ func _process(delta: float) -> void:
 			end_grabbing_minigame()
 
 func _input(event):
-	if event.is_action_pressed("Interact") and !minigame_started and grabbing_enabled == false:
+	if event.is_action_pressed("Interact") and !minigame_started and grabbing_enabled == false and is_popup_dismissed == true:
 		minigame_started = true
 		set_process(true)
 		start_countdown()
@@ -161,16 +163,13 @@ func end_grabbing_minigame() -> void:
 	GameData.current[GameData.KEY_GRABBING_TIME] = elapsed_time
 	GameData.current[GameData.KEY_GRABBING_JUNK_AMT] = junk_collected
 	print(GameData.current_fruits)
-	SavesManager.save_game(GameData.current)
+	GameData.initiate_save_game_data()
 	
 	animation_player.play("fadein")
 	await animation_player.animation_finished
 	
 	PopupManager.show_popup_dialog(str(
 		"Zapped all the ingredients!\n",
-		ingredient_1_name.to_upper(), ": ", ingredient_1_current_qty, "/", ingredient_1_target_qty, "\n",
-		ingredient_2_name.to_upper(), ": ", ingredient_2_current_qty, "/", ingredient_2_target_qty, "\n",
-		ingredient_3_name.to_upper(), ": ", ingredient_3_current_qty, "/", ingredient_3_target_qty, "\n",
 		"UNNECESSARY FRUIT: ", junk_collected, "\n",
 		"TOTAL TIME: ", round_to_dec(elapsed_time,2), "s" #TODO: convert in minutes and seconds, same above
 	), "Proceed")

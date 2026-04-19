@@ -116,7 +116,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ji1rd")
 
 [node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=708711159]
 layout_mode = 2
-text = "TIME LEFT: "
+text = "CLICK TO START"
 horizontal_alignment = 1
 vertical_alignment = 1
 
