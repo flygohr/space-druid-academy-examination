@@ -113,7 +113,8 @@ func _input(event):
 		minigame_started = true
 		set_process(true)
 		start_countdown()
-	# elif check mouse position for fruit
+		MusicManager.play_hover()
+	elif event.is_action_pressed("Interact"): MusicManager.play_hover()
 
 func start_countdown() -> void:
 	spawn_fruit(70)

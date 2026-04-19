@@ -45,6 +45,7 @@ func _process(_delta: float) -> void:
 
 func _on_mouse_hovered(hovered: bool) -> void:
 	reset_tween()
+	MusicManager.play_hover()
 	recalculate_outline_size()
 	tween.tween_property(background_topside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)
 	tween.tween_property(background_rightside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)

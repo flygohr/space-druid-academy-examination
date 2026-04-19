@@ -151,7 +151,9 @@ text = "QUIT TO TITLE"
 script = ExtResource("3_6wm04")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
 
+[connection signal="drag_ended" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ExportSaveButton" to="." method="_on_export_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ImportSaveButton" to="." method="_on_import_save_button_pressed"]

@@ -2,14 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c2ugdc8g1ddsw" path="res://autoloads/music_manager/music_manager.gd" id="1_tn5dr"]
 [ext_resource type="AudioStream" uid="uid://c5mqaxrfrftmv" path="res://audio/SFX/478196__jonnyruss01__click_2.wav" id="2_034fw"]
+[ext_resource type="AudioStream" uid="uid://bn1nyrywuuv28" path="res://audio/music/main_loop.ogg" id="2_rhnub"]
+[ext_resource type="AudioStream" uid="uid://damfpovbski74" path="res://audio/SFX/655157__bernhoftbret__clicking-4.mp3" id="4_722mk"]
 
 [node name="MusicManager" type="Node" unique_id=2088791662]
 process_mode = 3
 script = ExtResource("1_tn5dr")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=707347176]
+stream = ExtResource("2_rhnub")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=566597615]
 autoplay = true
@@ -17,4 +21,13 @@ bus = &"SFX"
 
 [node name="ClickSFX" type="AudioStreamPlayer2D" parent="." unique_id=284684655]
 stream = ExtResource("2_034fw")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="HoverSFX" type="AudioStreamPlayer2D" parent="." unique_id=886208147]
+stream = ExtResource("4_722mk")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="WrongFruitSFX" type="AudioStreamPlayer2D" parent="." unique_id=1500997387]
 bus = &"SFX"

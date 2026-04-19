@@ -53,3 +53,9 @@ func transition_in() -> void:
 	get_tree().paused = true
 	SavesManager.load_config(GameData.config)
 	canvas_layer.visible = true
+
+func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
+	MusicManager.play_click()
+
+func _on_music_slider_drag_ended(_value_changed: bool) -> void:
+	MusicManager.play_click()
